@@ -16,5 +16,12 @@ int encaixa(int a, int b){
         return 0;
 }
 int segmento(int a, int b){
+    char strA[12];
+    char strB[12];
+    sprintf(strA, "%d", a);
+    sprintf(strB, "%d", b);
+    for (int i = 0; i < 2; i++){
+        
+    }
     
 }

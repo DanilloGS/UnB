@@ -11,20 +11,33 @@ struct tipoShow {
     struct tipoBanda bandas[100];
 };
 void pesquisarNomeBanda(char pesquisa[80] , struct tipoShow shows [50] , int n);
+void cleanBuffer();
 int main(){
     int numShow, qntBandas;
     struct tipoShow shows[100];
     char nomeShow[80], nome[100];
-    scanf("%d ", &numShow);
+    puts("Num de shows");
+    scanf("%d", &numShow);
+    cleanBuffer();  
     for (int i = 0; i < numShow; i++) {
-        scanf("%[\n]", shows[i].nome);
-        scanf("%d ", &shows[i].qtd);
+        puts("Nome do evento");
+        scanf("%[^\n]", shows[i].nome);
+        cleanBuffer();
+        puts("Quantidade de bandas");
+        scanf("%d", &shows[i].qtd);
+        cleanBuffer();
         for (int j = 0; j < shows[i].qtd; j++){
-            scanf("%[\n]", shows[i].bandas[j].nome);
-            scanf("%d ", &shows[i].bandas[j].ano);
+            puts("Nome da banda");
+            scanf("%[^\n]", shows[i].bandas[j].nome);
+            cleanBuffer();
+            puts("Ano que tocou");
+            scanf("%d", &shows[i].bandas[j].ano);
+            cleanBuffer();            
         }
     }
-    scanf("%[\n]", nome);
+    puts("Qual banda quer procurar?");
+    scanf("%[^\n]", nome);
+    cleanBuffer();
     pesquisarNomeBanda(nome, shows, numShow);
 
     return 0;
@@ -34,7 +47,6 @@ void pesquisarNomeBanda(char pesquisa[80] , struct tipoShow shows [50] , int n){
     int bool = 0;
     for (int i = 0; i < n; i++){
         for (int j = 0; j < shows[i].qtd; j++){
-            printf("BANDAS ========> %s\n", shows[i].bandas[j].nome);
             if (strcmp(shows[i].bandas[j].nome, pesquisa) == 0){
                 printf("%s - ano %d\n", shows[i].nome, shows[i].bandas[j].ano);
                 bool = 1;
@@ -45,3 +57,7 @@ void pesquisarNomeBanda(char pesquisa[80] , struct tipoShow shows [50] , int n){
         printf("Banda nao cadastrada\n");
     }    
 } 
+void cleanBuffer(){
+    char c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
