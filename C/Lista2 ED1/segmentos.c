@@ -6,7 +6,7 @@ int segmento(int a, int b);
 int main(){
     int num1, num2;
     scanf("%d %d", &num1, &num2);
-    printf("%d\n", encaixa(num1, num2));
+    printf("%d\n", segmento(num1, num2));
     return 0;
 }
 int encaixa(int a, int b){
@@ -16,12 +16,18 @@ int encaixa(int a, int b){
         return 0;
 }
 int segmento(int a, int b){
-    char strA[12];
-    char strB[12];
+    if (a > b)  {
+        int aux;
+        aux = a;
+        a = b;
+        b = aux;
+    }
+    char strA[50];
+    char strB[50];
     sprintf(strA, "%d", a);
     sprintf(strB, "%d", b);
-    for (int i = 0; i < 2; i++){
-        
-    }
-    
+    if (strstr(strB,strA)==0)
+        return 0;
+    else
+        return 1;
 }

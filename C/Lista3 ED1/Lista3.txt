@@ -1,0 +1,54 @@
+Danillo Goncalves de Souza 170139981
+1. a) 1004
+   b) 2
+   c) 2
+   d) 1040
+
+As questões 1.a) e 1.d) estão subindo de 4 em 4, pois é o tamanho do dado que está sendo armazenado no endereço que no caso é um número inteiro.
+E as questões 1.b) e 1.c) está imprimindo o valor que está armazenado no vetor. 
+Tanto na 1.b) e na 1.c) está sendo adicionando um Byte a mais no endereço base do vetor.
+
+4. a) Inválido. Não se pode adicionar mais memória em um vetor com alocação estática.
+   b) Inválido. Não se pode adicionar mais memória em um vetor com alocação estática.
+   c) Inválido. O vetor tem um tamanho imutável.
+   d) Válido. O ponteiro é uma referência à um endereço, é mutável
+   e) Válido. O ponteiro é uma referência à um endereço, é mutável
+
+5. A seguinte função imprime uma string, caractere por caractere
+
+13. O código não funciona. Pois a função troca string não está funcionando da forma que devia. TERMINAR 
+
+15. 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+char *concat(char *frase1, char *frase2);
+void cleanBuffer();
+int main(int argc, char const *argv[]){
+    int tamanhoStr1, tamanhoStr2;
+    printf("Qual o tamanho máximo da primeira frase?\n");
+    scanf("%d", &tamanhoStr1);
+    printf("Qual o tamanho máximo da segunda frase?\n");
+    scanf("%d", &tamanhoStr2);
+
+    char *str1= calloc(tamanhoStr1+1, sizeof(char));
+    char *str2= calloc(tamanhoStr2+1, sizeof(char));
+    
+    cleanBuffer();
+    scanf("%[^\n]", str1);
+
+    cleanBuffer();    
+    scanf("%[^\n]", str2);
+
+    printf("%s\n", concat(str1, str2));
+    return 0;
+}
+
+char *concat(char *frase1, char *frase2){
+    return strcat(frase1, frase2);
+}
+
+void cleanBuffer(){
+    char c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
