@@ -7,11 +7,11 @@
         
         
         
-        <link rel="shortcut icon" href="/img/favicon.ico">
-        <title>My Docs</title>
-        <link href="/css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Pilhas - My Docs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <script src="/js/jquery-1.10.2.min.js" defer></script>
-        <script src="/js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/.">My Docs</a>
+                    <a class="navbar-brand" href="..">My Docs</a>
                 </div>
 
                 <!-- Expanded navigation -->
@@ -47,16 +47,16 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li >
-                                <a href="/.">Welcome to MkDocs</a>
+                                <a href="..">Welcome to MkDocs</a>
                             </li>
                             <li >
-                                <a href="/Lista/">Listas Encadeadas</a>
+                                <a href="../Lista/">Listas Encadeadas</a>
                             </li>
                             <li >
-                                <a href="/Lista02/">Lista</a>
+                                <a href="../Lista02/">Lista</a>
                             </li>
-                            <li >
-                                <a href="/Pilha/">Pilhas</a>
+                            <li class="active">
+                                <a href="./">Pilhas</a>
                             </li>
                         </ul>
 
@@ -66,21 +66,157 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li >
+                                <a rel="next" href="../Lista02/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="disabled">
+                                <a rel="prev" >
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#pilhas">Pilhas</a></li>
+            <li><a href="#pilha-com-vetores">Pilha com vetores</a></li>
+            <li><a href="#criando-um-modulo-para-pilha-de-inteiros">Criando um módulo para pilha de inteiros</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
 
-    <div class="row-fluid">
-      <div id="main-content" class="span12">
-        <h1 id="404-page-not-found" style="text-align: center">404</h1>
-        <p style="text-align: center"><strong>Page not found</strong></p>
-      </div>
-    </div>
+<h1 id="pilhas">Pilhas</h1>
+<p>Uma pilha é uma estrutura linear para manipulação de dados que segue o esquema LIFO. Last in First out, ou seja, o último que entra é o primeiro que saí.</p>
+<pre><code>6                  |\|                    
+5 |\|              |\|             |\|
+4 |\|              |\|             |\|
+3 |\|              |\|             |\|
+2 |\|              |\|             |\|    
+1 |\|              |X| Desempilha  |\|    
+0 |X| Empilha(1)-&gt; |1| Retorna 1   |X|
 
+X = Topo
+</code></pre>
+<h2 id="pilha-com-vetores">Pilha com vetores</h2>
+<h3 id="declaracao">Declaração</h3>
+<pre><code>    # define N 10
+    typedef struct pilha{
+        int dados[n];
+        int topo;
+    } pilha;
+</code></pre>
+<ol>
+<li>
+<p>Criação da pilha</p>
+<pre><code>void criaPilha(pilha *p){
+    p-&gt; topo = 0;
+}
+</code></pre>
+</li>
+<li>
+<p>Empilha</p>
+<pre><code>void empilha(pilha *p, int y){
+    p-&gt;dado[p-&gt;topo++]=y;
+}
+</code></pre>
+</li>
+<li>
+<p>Pilha cheia</p>
+<pre><code>int pilhaCheia(pilha *p){
+    return p-&gt; topo == N;
+}
+</code></pre>
+</li>
+<li>
+<p>Desempilha </p>
+<pre><code>int desempilha (pilha *p){
+    return p-&gt;dado[--p-&gt;topo]
+}
+</code></pre>
+</li>
+<li>
+<p>Pilha vazia</p>
+<pre><code>int pilhaVazia(pilha *p){
+    return !p -&gt; topo
+    // If pilha vazia, p == 0 esle p != 0
+}
+</code></pre>
+</li>
+</ol>
+<p><strong>Obs.:</strong> 
+- <strong>1 Empilha só pode ser chamado se a pilha não estiver cheia</strong>
+- <strong>2. Desempilha só pode ser chamado se a pilha não estiver vazia</strong></p>
+<h2 id="criando-um-modulo-para-pilha-de-inteiros">Criando um módulo para pilha de inteiros</h2>
+<ul>
+<li>Um módulo é um par de arquivos de mesmo nome com extensão .h e .c, respectivamente.</li>
+<li>
+<p>O arquivo .h é chamado <strong>header file</strong> (arquivo interface) e contem protótipos de funçoess. Um arqivo de nome .h possui o seguinte formato</p>
+<pre><code>#define _nome.h
+#define _nome.h
 
+/*Protótipos e constantes*/
+
+#endif
+</code></pre>
+</li>
+<li>
+<p>O arquivo .c, por sua vez, possui as implementações das funções declaradas no .h</p>
+</li>
+</ul>
+<h3 id="pilhainth">pilhaInt.h</h3>
+<pre><code>    #ifndef _pilhaInt.h
+    #define _pilhaInt.h
+
+    int criaPilha();
+    int empilha(int y);
+    int desempilha(int *y);
+    void destroiPilha();
+
+    #endif
+</code></pre>
+<h3 id="pilhaintc">pilhaInt.c</h3>
+<pre><code>    static int *pilha;
+    static int N, topo;
+
+    int criaPilha(){
+        N=10;
+        pilha = malloc(N*sizeof(int));
+        pilha==NULL ? return 0:return 1;
+    }
+
+    int empilha(int y){
+        if(topo == N){
+            if((pilha = realloc(pilha, 2*N))==NULL)
+                return 0;
+            N*=2;
+        }
+        pilha[topo++]=y;
+        return 1;
+    }
+
+    int desempilha(int *y){
+        if(!topo)
+            return 0;
+        *y = pilha[--topo];
+        return 0;
+    }
+
+    void destroiPilha(){
+        free(pilha);
+    }
+</code></pre>
+<h3 id="main">main</h3>
+<pre><code>    #include "pilhaInt.h"
+</code></pre>
+<h3 id="compilar">Compilar</h3>
+<pre><code>    gcc -o main main.c pilhaInt.c
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
@@ -88,11 +224,11 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "/",
+            var base_url = "..",
                 shortcuts = {"next": 78, "search": 83, "help": 191, "previous": 80};
         </script>
-        <script src="/js/base.js" defer></script>
-        <script src="/search/main.js" defer></script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
