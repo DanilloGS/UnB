@@ -7,11 +7,11 @@
         
         
         
-        <link rel="shortcut icon" href="/img/favicon.ico">
-        <title>My Docs</title>
-        <link href="/css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Listas Encadeadas - My Docs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <script src="/js/jquery-1.10.2.min.js" defer></script>
-        <script src="/js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/.">My Docs</a>
+                    <a class="navbar-brand" href="..">My Docs</a>
                 </div>
 
                 <!-- Expanded navigation -->
@@ -47,16 +47,16 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li >
-                                <a href="/.">Welcome to MkDocs</a>
+                                <a href="..">Welcome to MkDocs</a>
+                            </li>
+                            <li class="active">
+                                <a href="./">Listas Encadeadas</a>
                             </li>
                             <li >
-                                <a href="/Lista/">Listas Encadeadas</a>
+                                <a href="../Lista02/">Lista</a>
                             </li>
                             <li >
-                                <a href="/Lista02/">Lista</a>
-                            </li>
-                            <li >
-                                <a href="/Pilha/">Pilhas</a>
+                                <a href="../Pilha/">Pilhas</a>
                             </li>
                         </ul>
 
@@ -66,21 +66,86 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li >
+                                <a rel="next" href="..">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../Lista02/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#listas-encadeadas">Listas Encadeadas</a></li>
+            <li><a href="#o-que-e-uma-lista">O que é uma lista</a></li>
+            <li><a href="#exemplos">Exemplos</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
 
-    <div class="row-fluid">
-      <div id="main-content" class="span12">
-        <h1 id="404-page-not-found" style="text-align: center">404</h1>
-        <p style="text-align: center"><strong>Page not found</strong></p>
-      </div>
-    </div>
+<h1 id="listas-encadeadas">Listas Encadeadas</h1>
+<h2 id="o-que-e-uma-lista">O que é uma lista</h2>
+<ul>
+<li>Estrutura de dados dinâmica que tem a capacidade de adicionar ou remover elementos sem mudar o lugar de outros elementos, não precisa definir um tamanho máximo com em vetores.</li>
+</ul>
+<h2 id="exemplos">Exemplos</h2>
+<pre><code>    _____    _ 
+    |1|2|...|N|
+     | |-&gt;Proximo
+     |-&gt; Dado
+</code></pre>
+<ul>
+<li>
+<p>Um dado N está sempre ligado à um dado N+1</p>
+<pre><code>struct celula{
+    int dado;
+    struct celula *prox; /* É o ponteiro que aponta para o próximo elemento que pode estar em qualquer lugar;*/
+}
 
+int v[5]; // Alocação automática
+int *v = malloc(5*sizeof(int)); // Alocação dinâmica
+v[i];
+</code></pre>
+<ol>
+<li>
+<p>Lista sem cabeça: </p>
+<p>celula *l = NULL;</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Lista com cabeça: </p>
+<pre><code>celula *l = malloc(sizeof(celula)); 
+   |-&gt; prox = NULL;
+</code></pre>
+</li>
+<li>
+<p>Ex.: Faça uma função para imprimir o conteúdo de uma lista encadeado.</p>
+<pre><code>void print_vetor(int v[], int n){
+    for(int i = 0; i &lt; n ; i++){
+        printf("%d", v[i]);
+    }
+}
 
+void ptint_vetor(celula *l){
+    for(celula*p = l-&gt; prox; p!= NULL; p = p -&gt; prox){
+        printf("%d", p=&gt;dado)
+    }
+}
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>O custo de um algoritimo é quanto tempo ele gasta em temos de entrada, quanto mais laços maior o valor de O(N^i). Se tiver só um ciclo é um algoritmo linear. Dependde de quantos Ciclos aninhados existem (Um for dentro de outro etc)</p>
+</blockquote></div>
         </div>
 
         <footer class="col-md-12">
@@ -88,11 +153,11 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "/",
+            var base_url = "..",
                 shortcuts = {"next": 78, "search": 83, "help": 191, "previous": 80};
         </script>
-        <script src="/js/base.js" defer></script>
-        <script src="/search/main.js" defer></script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
