@@ -15,7 +15,7 @@
             return -1;
         }
 
-- O custo para inserir um elemento numa lista é constante, e bem mais barato que num vetor, que é linear. Em contrapartidada, acessar um elementonum vetor O(1), enquanto num vetor é O(n).
+- O custo para inserir um elemento numa lista é constante e é bem mais barato que num vetor, que é linear. Em contrapartidada, acessar um elementonum vetor O(1), enquanto num vetor é O(n).
 
         int removeVetor(int *v, int n){
             int elem = v[0];
