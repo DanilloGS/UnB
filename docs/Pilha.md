@@ -16,7 +16,7 @@ Uma pilha é uma estrutura linear para manipulação de dados que segue o esquem
 
         # define N 10
         typedef struct pilha{
-            int dados[N];
+            int dados[n];
             int topo;
         } pilha;
 
