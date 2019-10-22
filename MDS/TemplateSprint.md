@@ -1,7 +1,7 @@
 # Informações básicas da Sprint
 |||
 |:---:|:---:|
-|**Sprint**|5|
+|**Sprint**||
 |**Início**|03/09/19|
 |**Término**|09/09/19|
 |**Duração**|7 dias|

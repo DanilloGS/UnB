@@ -2,6 +2,7 @@
     "files.associations": {
         "stdio.h": "c",
         "array": "c",
-        "algorithm": "c"
+        "algorithm": "c",
+        "cstdio": "c"
     }
 }
