@@ -3,6 +3,7 @@
         "stdio.h": "c",
         "array": "c",
         "algorithm": "c",
-        "cstdio": "c"
+        "cstdio": "c",
+        "vetortamanhofixo.h": "c"
     }
 }

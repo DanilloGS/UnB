@@ -8,7 +8,6 @@
 
 2 - Indicadores de ínicio e final da fila
 
-    
         #define N=10
         typedef struct {
             int fila [N];

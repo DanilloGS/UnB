@@ -5,9 +5,9 @@
 |**Início**|10/09/19|
 |**Término**|16/09/19|
 |**Duração**|7 dias|
-|**Pontos Planejados**|0|
+|**Pontos Planejados**|34|
 |**Pontos da Dívida Passada**|5|
-|**Pontuação Total**|0|
+|**Pontuação Total**|39|
 
 ---
 
