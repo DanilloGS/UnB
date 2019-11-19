@@ -10,27 +10,26 @@ int printCelula(celula *p);
 void buscar(int x, celula *p);
 void buscaEInsere(int x, int y, celula *p);
 void destruir(int x, celula *p);
+void iniciar(celula *p);
 
 int main(int argc, char const *argv[]){
     celula first, last;
-    celula *l = &first, *aux = l;
+    celula *l, *aux = l;
 
-    first.dado = 10;
-    last.dado = 100;
-    first.prox = &last;
-    last.prox = NULL;
-    
+    // first.dado = 10;
+    // last.dado = 100;
+    iniciar(l);
     insere(2,l);
-    insere(8,l->prox);
-    insere(7,l->prox->prox);
+    insere(8,l);
+    insere(7,l);
     puts("Antes");
     printCelula(l);
 
-    puts("Depois");
-    buscaEInsere(999, 7, l);
-    printCelula(l);
-    
     return 0;
+}
+void iniciar(celula *p){
+    p = malloc(sizeof(celula));
+    p->prox=NULL;
 }
 void insere(int x, celula *p){
     celula *nova;

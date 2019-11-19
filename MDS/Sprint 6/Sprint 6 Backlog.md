@@ -1,7 +1,7 @@
 # Sprint Backlog
 |Issue|Descrição|Pontos|Responsáveis|Status|
 |:---:|:---:|:---:|:---:|:---:|
-|[#60](https://github.com/fga-eps-mds/2019.2-Questmark/issues/60)|Iniciar estudos do Chart.js|1|Todos|Não Concluído|
+|[#60](https://github.com/fga-eps-mds/2019.2-Questmark/issues/60)|Iniciar estudos do Chart.js|1|Todos|Concluído|
 |[#61](https://github.com/fga-eps-mds/2019.2-Questmark/issues/61)|Organizar repositório|5|Lucas Lopes<br>Luiz Gustavo|Concluído|
 |[#62](https://github.com/fga-eps-mds/2019.2-Questmark/issues/62)|Revisar documentos|3|Danillo Souza<br>Nicalo Ribeiro|Não Concluído*|
 |[#63](https://github.com/fga-eps-mds/2019.2-Questmark/issues/63)|Criar um diagrama de arquitetura|5|Gustavo Nogueira<br>Miguel Santos|Concluído|
