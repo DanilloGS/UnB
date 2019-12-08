@@ -1,5 +1,5 @@
 # Matriz esparsa
-- É uma matriz que possui muitos elemntos nulos
+- É uma matriz que possui muitos elementos nulos
 
 ## Representação usando LE
 - Dada uma matriz esparsa A de m**x**n (CSR - Compressed Sparse Row)
@@ -9,7 +9,7 @@
 d = nnz / m*n
      |-> Number of non zeros
 ```
-- Compensa representar uma matriz no formato esparso quando a densidade é  <= 3 (Depende da implementação).
+- Compensa representar uma matriz no formato esparso quando a densidade é  <= 30% (Depende da implementação).
 
 ## Implementação
 ### Lista encadeada
@@ -73,5 +73,5 @@ d = nnz / m*n
     }
 ```
 - __Obs.: Para melhorar desempenho, podemos__
-- __Não armazenar elementos orndenados por colunas nas linhas = O(1)__
-- __Não se preocupar com o elementos duplicados ou nulos na inserção de elementos__
+  - __Não armazenar elementos orndenados por colunas nas linhas = O(1)__
+  - __Não se preocupar com o elementos duplicados ou nulos na inserção de elementos__

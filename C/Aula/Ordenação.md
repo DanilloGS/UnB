@@ -13,7 +13,6 @@
         *b = aux;
     }
 ```
-
 ---
 ## Selection Sort
 ```
@@ -36,7 +35,7 @@
     void selectionSortRec(int *v, int i, int n){
         if(i < n+1){
             int menor;
-            for(int j = i; ; j++){
+            for(int j = i; j < n ; j++){
                 if(v[j] < v[menor])
                     menor = j;
             }
@@ -53,9 +52,9 @@
 ## Insertion Sort
 ```
     void insertionSort(int *v, int n){
-        for(int i=0; i < n; i++){
-            int j = i-1;
-            while(j>=0 && v[j] < v[i]){
+        for(int i=1; i < n; i++){
+            j = i;
+            while(j>=1 && v[j] < v[i-1]){
                 swap(&v[j], &v[j-1]);
                 j--;
             }
@@ -82,7 +81,7 @@
 ---
 ## Bubble Sort
 ```
-    void bubbleSort(*v, int n){
+    void bubbleSort(int *v, int n){
         int inversao;
         do {
             inversao = 0;
@@ -92,10 +91,22 @@
                     inversao = 1;
                 }
             }
-        } while(inversao)
+        } while(inversao);
     }
 ```
-
+### Solução recursiva
+```
+    void bubbleSortRec(int *v, int n){
+        if (n != 0){
+            for (int i = 1; i < n; i++)
+                if (v[i] < v[i-1])
+                    swap(&v[i], &v[i-1]);
+            bubbleSortRec(v, n-1);
+        }
+    } 
+```
+- **Melhor caso**: O(n)
+- **Pior caso**: O(n²)
 ---
 ## Ordenação de contagem
 
@@ -114,16 +125,17 @@
 3 - Sobrescreve-se o vetor baseado na contagem
 
 ```
-    void ordContagem(int *v, int n, int a, int b){
-        int *aux = calloc(b->,sizeof(int));
-        for(int i = 0; i < n; i++)
-            aux[v[i]-a]++; // Conta ocorrência de cada elemento v
-        for(int i = 0, j = 0; i < b-a+1; i++){
-                while(aux[i]>0){
-                v[j] = i+a;
-                j++;
-                aux[i]--; // Constante depende de b-a
-            }
+    void countingSort(int *v, int n, int menorNum, int maiorNum){
+        int *aux = calloc(maiorNum - menorNum + 1,sizeof(int)); 
+        for(int i = 0; i < n; i++) 
+            aux[v[i]-menorNum]++; // Conta ocorrência de cada elemento v
+        int j = 0;
+        for(int i = 0; i < maiorNum-menorNum+1; i++){ 
+                while(aux[i]>0){ 
+                    v[j] = i+menorNum;
+                    j++;
+                    aux[i]--; // Constante depende de maiorNum-menorNum
+                }
         }
         free(aux);
     }
@@ -133,10 +145,10 @@
 **Ex.:** Ordenar um vetor de 100 elementos variando de 0 a 2 bilhões.
 - Custo de um O(n²) = 100² = 10⁴
 - Custo de produção por = 2 * 10³ * 100 = 10⁴ 
-
+- *Complexidade:* O(2(n+k)) = O(n+k)
 ---
 
-## Ordenação por distribuição
+## Radix Sort
 
 ```
     |38|63|90|42|37|10|84|18|55|77|65|13|
@@ -147,19 +159,17 @@
 
 ```
 - d passos (Número de dígitos)
-  - 0 até 9 = 10 percorridadas no vetor = 10 * d * n = O(n) 
+  - 0 até 9 = 10 percorridadas no vetor = O(d(10+n)) = O(n) 
 
 ```
-    void ordSistribuicao(char **v, int n, int d){
+    void radixSort(char **v, int n, int d){
         for(int i = d-1; i >= 0; i--){
-            for(int j = 0, l = 0; j < 10; j++){
-                for(int k = 0; k < n; k++){
-                    if(v[k][i]-'0'==j){
-                        troca(v, k, l);
+            for(int j = 0, l = 0; j < 10; j++)
+                for(int k = 0; k < n; k++)
+                    if(v[k][i]-'0'== j){
+                        troca(v, k, l, d);
                         l++;
                     }
-                }
-            }
         }
     }
 
@@ -171,3 +181,23 @@
         free(aux);
     }
 ```
+---
+```
+    void radixSort(int *v, int n, int d){
+        for(int i = 0; i < d; i++){
+            for(int j = 0; j < n; j++)
+                enfileira(v[j], dig(v[j], i));
+            for(int j = 0, k = 0; k < 10; k++)
+                while(desenfileira(&v[j], k))
+                    j++;
+        }
+    }
+```
+```
+    void dig(int num, int d){
+        int t1 = pow(10,d);
+        int t2 = 10*t1;
+        return (num % t2)/t1;
+    }
+```
+---
