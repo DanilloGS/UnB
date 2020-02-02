@@ -13,32 +13,32 @@ int main()
     for (int i = 0; i < moves; i++) {
         scanf("%d %d", &paDirecao, &pbDirecao);
         switch (paDirecao) {
-        case 1:
-            paInitialY++;
-            break;
-        case 2:
-            paInitialY--;
-            break;
-        case 3:
-            paInitialX++;
-            break;
-        case 4:
-            paInitialX--;
-            break;
+            case 1:
+                paInitialY++;
+                break;
+            case 2:
+                paInitialY--;
+                break;
+            case 3:
+                paInitialX++;
+                break;
+            case 4:
+                paInitialX--;
+                break;
         }
         switch (pbDirecao) {
-        case 1:
-            pbInitialY++;
-            break;
-        case 2:
-            pbInitialY--;
-            break;
-        case 3:
-            pbInitialX++;
-            break;
-        case 4:
-            pbInitialX--;
-            break;
+            case 1:
+                pbInitialY++;
+                break;
+            case 2:
+                pbInitialY--;
+                break;
+            case 3:
+                pbInitialX++;
+                break;
+            case 4:
+                pbInitialX--;
+                break;
         }
         if ((((paInitialX < 1) || (paInitialY < 1)) || ((paInitialX > maxX) || (paInitialY > maxY))) && bool == 0) {
             saveVar[0] = paInitialX;

@@ -87,26 +87,24 @@ void removerFila(lista **l)
 {
     *l = (*l)->prox;
 };
-void removerX(lista **l, int x)
+void removerX(lista *le, int x)
 {
-    lista *aux = *l;
-    while (aux != NULL)
-    {
-        if (aux->prox != NULL)
-        {
-            if (aux->prox->dado == x)
-            {
-                aux->prox = aux->prox->prox;
-                return;
+    lista *p;
+        if(le != NULL) {
+            if(le->dado == x) {
+                p = le;
+                le = le->prox;
+                free(p);
+            }
+            else {
+                for(p = le; p->prox != NULL && p->prox->dado != x; p = p->prox);
+                if(p -> prox != NULL) {
+                    lista *aux = p->prox;
+                    p->prox = aux->prox;
+                    free(aux);
+                }
             }
         }
-        else if (aux->dado == x){
-            aux = NULL;
-            return;
-        }
-        aux = aux->prox;
-    }
-    printf("Não existe na lista\n");
 };
 int main()
 {
@@ -119,8 +117,8 @@ int main()
     criar(&l, 1);
     printFila(l);
     sort(&l);
-    removerX(&l, 3);
-    removerX(&l, 5);
+    removerX(l->prox, 1);
+    removerX(l->prox, 3);
     printFila(l);
     return 0;
 }

@@ -5,6 +5,7 @@ int main(int argc, char const *argv[])
     int total = 0, dig1, dig2, bool;
     long int x;
     scanf("%ld", &x);
+    printf("%d\n", 10 * ((x / 10000000000)));
     total += 10 * ((x / 10000000000));
     total += 9 * ((x / 1000000000) % 10);
     total += 8 * ((x / 100000000) % 10);

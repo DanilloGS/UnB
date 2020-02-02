@@ -1,18 +1,18 @@
 #include <stdio.h>
+#include <math.h>
 int encaixa(int a, int b){
-    int n, i = 1;
-    a = a<0? a*-1: a;
-    b = b<0? b*-1: b;
-    n = b;
-    while (n > 10) {
+    int n = b, i = 0, m = 1;
+    a = a < 0 ? a*-1 : a;
+    b = b < 0 ? b*-1 : b;
+    while (n > 0){
         n/=10;
-        i*=10;
+        m*=10;
     }
-    // printf("-------> %d\n", i);
-    return a%(10*i)==b;
+    return a%m == b;
 }
 int main(int argc, char const *argv[])
 {
-    printf("%d\n", encaixa(110,1100));
+    int x = encaixa(1111, 2);
+    printf("%d\n", x);
     return 0;
 }
