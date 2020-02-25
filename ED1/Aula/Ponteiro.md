@@ -104,6 +104,7 @@
 - **NULL:** É uma constante da stdlib.h que representa 0;
 - **exit:** É da stdlib.h e encerra retornando o código passado por argumento
   - **EXIT_SUCESS = 0**
+  - **exit(EXIT_SUCESS)**
   - **EXIT_FAILURE = 1**
   - **exit(EXIT_FAILURE)**
 #### Diferença entre alocação estática e dinâmica

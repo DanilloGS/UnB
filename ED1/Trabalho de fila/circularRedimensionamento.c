@@ -20,7 +20,7 @@ Queue *insert(Queue *f, int valueAdded)
 int resizeQueue(Queue *f)
 {
     int j;
-    f->queue = (int *)realloc(f->queue, 2 * f->N * sizeof(int));
+    f->queue = realloc(f->queue, 2 * f->N * sizeof(int));
     if (f->p > f->u)
     {
         if (f->N - f->p > f->u)

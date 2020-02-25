@@ -34,7 +34,6 @@ void remove_elemento (celula *le, int x) {
 void remove_todos_elementos (celula *le, int x) {
     celula *anterior, *proxima, *aux;
     anterior = le;
-    proxima = anterior->prox;
     while (proxima != NULL) {
         if (proxima->dado == x) {
             aux = proxima;
@@ -44,6 +43,7 @@ void remove_todos_elementos (celula *le, int x) {
         }  
         else {        
             anterior = proxima;
+
             proxima = proxima->prox;
         }
     }

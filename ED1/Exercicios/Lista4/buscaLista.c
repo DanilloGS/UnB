@@ -14,9 +14,8 @@ celula *busca (celula *le, int x) {
 
 celula *busca_rec (celula *le, int x) {
     celula *aux = le->prox;
-    if (aux == NULL || aux->dado == x){
+    if (aux == NULL || aux->dado == x)
         return aux;
-    }
     else
         return busca_rec(aux, x);
 }
